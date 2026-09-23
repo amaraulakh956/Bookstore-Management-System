@@ -23,12 +23,16 @@ A Java desktop application for running a bookstore: an owner manages inventory, 
 - GitHub Actions (CI on every push/PR)
 
 ## Architecture
-com.bookstore.model Book, Customer, Owner, User, PurchaseRecord
-com.bookstore.state LoyaltyState interface + SilverState/GoldState (State pattern)
-com.bookstore.repository BookRepository / CustomerRepository / PurchaseRepository
-interfaces, each with a File-based and a SQLite-based implementation
-com.bookstore.service BookstoreService (application facade), SalesReport, PersistenceType
-com.bookstore.ui Swing screens (Login, Owner*, Customer*)
+
+```
+com.bookstore.model        Book, Customer, Owner, User, PurchaseRecord
+com.bookstore.state        LoyaltyState interface + SilverState/GoldState (State pattern)
+com.bookstore.repository   BookRepository / CustomerRepository / PurchaseRepository
+                            interfaces, each with a File-based and a SQLite-based implementation
+com.bookstore.service      BookstoreService (application facade), SalesReport, PersistenceType
+com.bookstore.ui           Swing screens (Login, Owner*, Customer*)
+```
+
 `BookstoreService` depends only on the repository *interfaces*, so business logic never knows or cares whether data is coming from flat files or SQLite — swapping the backend is a one-line change (`BookstoreService.using(PersistenceType.SQLITE)`).
 
 ```mermaid
