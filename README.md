@@ -94,6 +94,4 @@ data files).
 - Multi-quantity checkout (buy 2 of the same title in one transaction) instead of one checkbox per copy.
 - Export the sales report to CSV.
 
-## License
 
-MIT — see [LICENSE](LICENSE).
